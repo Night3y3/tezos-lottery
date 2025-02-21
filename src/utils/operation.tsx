@@ -2,7 +2,7 @@
 
 import { tezos } from "./tezos";
 
-export const buyTicketOperation = async () => {
+export const buyTicketOperation = async (randomBytes: string) => {
     try {
         const contract = await tezos.wallet.at("KT1LFfPVU9VyAgr2JKgqZPYbFhv9VUf1VywT")
         const op = await contract.methods.buy_ticket().send({

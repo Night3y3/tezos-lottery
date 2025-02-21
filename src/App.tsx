@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import { buyTicketOperation, endGameOperation } from "./utils/operation";
 import { getStorage } from "./utils/tzkt";
 import { useAppSelector } from "./redux/hooks";
+import crypto from "crypto"
 
 const App: React.FC = () => {
   // Players holding lottery tickets
@@ -30,7 +31,7 @@ const App: React.FC = () => {
   const onBuyTicket = async () => {
     try {
       setLoading(true)
-      await buyTicketOperation()
+      await buyTicketOperation(crypto.randomBytes(32).toString("hex"))
       alert("Ticket bought successfully")
 
     } catch (error) {
